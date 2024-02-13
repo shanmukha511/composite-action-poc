@@ -1,0 +1,17 @@
+name: 'Helmfile Installation'
+description: 'Helmfile Binary Installation'
+inputs:
+  helmfile-version:
+    description: 'Version of Helmfile'
+    type: string
+    required: false
+    default: '0.161.0'
+runs:
+  using: "composite"
+  steps:
+    - name: Helmfile Dependencies
+      run: |
+        sudo wget -q --no-check-certificate https://github.com/helmfile/helmfile/releases/download/v${{ inputs.helmfile-version }}/helmfile_${{ inputs.helmfile-version }}_linux_amd64.tar.gz
+        sudo tar -xzf helmfile_${{ inputs.helmfile-version }}_linux_amd64.tar.gz
+        sudo mv helmfile /usr/local/bin/helmfile
+        helmfile init --force -q
