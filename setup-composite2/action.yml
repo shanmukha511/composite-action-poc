@@ -13,6 +13,6 @@ runs:
       run: |
         sudo wget -q --no-check-certificate https://get.helm.sh/helm-v${{ inputs.helmfile-version }}-linux-amd64.tar.gz
         sudo tar -xzf helm-v${{ inputs.helm-version }}-linux-amd64.tar.gz
-        sudo mv helm /usr/local/bin/helm
+        sudo mv linux-amd64/helm /usr/local/bin/helm
         helm version
       shell: bash
