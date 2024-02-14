@@ -15,4 +15,5 @@ runs:
         sudo tar -xzf helmfile_${{ inputs.helmfile-version }}_linux_amd64.tar.gz
         sudo mv helmfile /usr/local/bin/helmfile
         helmfile init --force -q
+        helmfile version
       shell: bash
