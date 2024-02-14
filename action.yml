@@ -1,0 +1,18 @@
+name: 'Helm Cli Installation'
+description: 'Helm CLI Binary Installation'
+inputs:
+  helm-version:
+    description: 'Version of Helm'
+    type: string
+    required: false
+    default: '3.14.0'
+runs:
+  using: "composite"
+  steps:
+    - name: Helm Dependencies
+      run: |
+        sudo wget -q --no-check-certificate https://get.helm.sh/helm_v${{ inputs.helmfile-version }}-linux-amd64.tar.gz
+        sudo tar -xzf helm-v${{ inputs.helm-version }}-linux-amd64.tar.gz
+        sudo mv helm /usr/local/bin/helm
+        helm version
+      shell: bash
